@@ -1,0 +1,19 @@
+name: build-and-deploy
+
+on:
+  push:
+    branches:
+      - dev
+      - qa
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: check aws cli
+        run: make check_aws
