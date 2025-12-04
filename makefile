@@ -12,5 +12,5 @@ tag-remote:
 login:
 	docker login -u $(DOCKERHUB_USERNAME) -p $(DOCKERHUB_PASSWORD) registry.hub.docker.com
 
-push: login
+push:
 	docker push $(REPOSITORY_NAME)/hackaton-service:$(DOCKER_IMAGE_TAGNAME)
