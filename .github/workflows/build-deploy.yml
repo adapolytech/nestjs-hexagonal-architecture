@@ -1,4 +1,4 @@
-name: build-and-push-docker-image
+name: Build and Push Docker Image
 
 on:
   push:
@@ -16,13 +16,13 @@ jobs:
       - name: Build docker image (Dev)
         if: github.ref == 'refs/head/dev'
         env:
-          - DOCKER_IMAGE_TAGNAME=dev
+          DOCKER_IMAGE_TAGNAME: dev
         run: make build
 
       - name: Build docker image (Production)
         if: github.ref == 'refs/head/main'
         env:
-          - DOCKER_IMAGE_TAGNAME=latest
+          DOCKER_IMAGE_TAGNAME: latest
         run: make build
 
       - name: Tag image name to push on registery
