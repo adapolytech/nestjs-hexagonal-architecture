@@ -14,13 +14,13 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Build docker image (Dev)
-        if: github.ref == 'refs/head/dev'
+        if: github.ref == 'refs/heads/dev'
         env:
           DOCKER_IMAGE_TAGNAME: dev
         run: make build
 
       - name: Build docker image (Production)
-        if: github.ref == 'refs/head/main'
+        if: github.ref == 'refs/headsmain'
         env:
           DOCKER_IMAGE_TAGNAME: latest
         run: make build
