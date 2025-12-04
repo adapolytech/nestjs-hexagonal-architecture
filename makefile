@@ -6,7 +6,7 @@ build:
 	docker build -t $(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAGNAME) .
 
 tag-remote:
-	docker tag $(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAGNAME) hackaton-service:$(DOCKER_IMAGE_TAGNAME)
+	docker tag $(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAGNAME) $(REPOSITORY_NAME)/hackaton-service:$(DOCKER_IMAGE_TAGNAME)
 
 push:
 	docker push $(REPOSITORY_NAME)/hackaton-service:$(DOCKER_IMAGE_TAGNAME)
