@@ -1,19 +1,32 @@
-name: build-and-deploy
+name: build-and-push-docker-image
 
 on:
   push:
-    branches:
-      - dev
-      - qa
-      - main
+    branches: [dev, main]
 
 jobs:
-  build-and-deploy:
+  name: build and push on docker registry
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v6
 
-      - name: check aws cli
-        run: make check_aws
+      - name: Build docker image (Dev)
+        if: github.ref == 'refs/head/dev'
+        env:
+          - DOCKER_IMAGE_TAGNAME=dev
+        run: make build
+
+      - name: Build docker image (Production)
+        if: github.ref == 'refs/head/main'
+        env:
+          - DOCKER_IMAGE_TAGNAME=latest
+        run: make build
+
+      - name: Tag image name to push on registery
+        run: make tag-remote
+
+      - name: Push to Docker Registery
+        run: make push

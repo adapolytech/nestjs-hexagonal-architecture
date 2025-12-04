@@ -6,14 +6,14 @@ import { CoreModule } from './core/core.module';
 import { ApplicationBootstrapOptions } from './common/interfaces/application-bootstrap-options.interface';
 import { AlarmsInfrastructureModule } from './alarms/infrastructure/persistence/alarms-infrastructure.module';
 import { CqrsModule } from '@nestjs/cqrs';
-import { UsersModule } from './users/application/users.module';
+//import { UsersModule } from './users/application/users.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     CqrsModule.forRoot(),
     ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
-    UsersModule,
+    // UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

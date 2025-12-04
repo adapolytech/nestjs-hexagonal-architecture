@@ -1,8 +1,12 @@
-.DEFAULT_GOAL := build
-
-# NEW_PATH := $(if $(HOMEE),$(HOME),/home/ada)/nuulestdev
+DOCKER_IMAGE_NAME ?= hackaton_service
+DOCKER_IMAGE_TAGNAME ?= latest
+REPOSITORY_NAME := nuulestdev
 
 build:
-	echo $(PATH)
-check_aws:
-	aws --version
+	docker build -t $(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAGNAME) .
+
+tag-remote:
+	docker tag $(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAGNAME) hackaton-service:$(DOCKER_IMAGE_TAGNAME)
+
+push:
+	docker push $(REPOSITORY_NAME)/hackaton-service:$(DOCKER_IMAGE_TAGNAME)
