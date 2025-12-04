@@ -5,8 +5,8 @@ on:
     branches: [dev, main]
 
 jobs:
-  name: build and push on docker registry
   deploy:
+    name: build and push on docker registry
     runs-on: ubuntu-latest
 
     steps:
