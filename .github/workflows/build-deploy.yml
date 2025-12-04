@@ -20,7 +20,7 @@ jobs:
         run: make build
 
       - name: Build docker image (Production)
-        if: github.ref == 'refs/headsmain'
+        if: github.ref == 'refs/heads/main'
         env:
           DOCKER_IMAGE_TAGNAME: latest
         run: make build
